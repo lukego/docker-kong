@@ -8,19 +8,23 @@ RUN apt-get upgrade -y
 RUN apt-get install -y \
     axel \
     build-essential \
+    curl \
     git \
     gosu \
     libcap2 \
-    libssl-dev \
     luarocks \
     m4 \
     ssh \
     libpcre3-dev \
     perl \
     sudo \
-    unzip
+    unzip \
+    zlib1g-dev
 
 # Install
+
+COPY ./install-openssl.sh /install-openssl.sh
+RUN /install-openssl.sh
 
 COPY ./install-openresty.sh /install-openresty.sh
 RUN /install-openresty.sh
