@@ -35,6 +35,9 @@ RUN /install-luarocks.sh
 COPY ./install-kong.sh /install-kong.sh
 RUN /install-kong.sh
 
+COPY ./install-luajit.sh /install-luajit.sh
+RUN /install-luajit.sh
+
 RUN useradd --uid 1337 kong
 
 # Post-install

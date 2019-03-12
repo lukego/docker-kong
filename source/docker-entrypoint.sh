@@ -27,6 +27,8 @@ if [ "$1" == "kong" ]; then
       setcap cap_net_raw=+ep /usr/local/openresty/nginx/sbin/nginx
     fi
 
+    # Use locally built LuaJIT instead of OpenResty-bundled version
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
     exec gosu kong /usr/local/openresty/nginx/sbin/nginx \
       -p "$PREFIX" \
       -c nginx.conf
